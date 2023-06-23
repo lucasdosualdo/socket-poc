@@ -7,6 +7,7 @@ io.on("connection", (socket) => {
   });
   socket.on("setUsername", (username) => {
     socket.data.username = username;
+    console.log(socket.data.username, "username recebido");
   });
 
   socket.on("message", (text) => {

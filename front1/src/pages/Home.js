@@ -1,19 +1,20 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import { socket } from "../api/socket";
+import { socket } from "../api/socket";
 
 export default function Home() {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("");
   const [username, setUsername] = useState("");
-
+  console.log(socket, "socket fora");
   const handleSubmit = () => {
     if (selectedOption === "" || username === "") {
       alert("selecione a sala ou insira um nome corretamente");
       return;
     }
-    // socket.emit("setRoom", selectedOption);
-    // socket.emit("setUsername", username);
+    socket.emit("setRoom", selectedOption);
+    socket.emit("setUsername", username);
+    console.log(socket, "socket dentro");
     setUsername("");
     navigate(`/room/${selectedOption.slice(-1)}`);
   };

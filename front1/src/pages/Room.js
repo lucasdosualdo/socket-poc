@@ -5,6 +5,7 @@ import { socket } from "../api/socket";
 export default function Room() {
   const [message, setMessage] = useState("");
   const [messagesList, setMessagesList] = useState([]);
+
   useEffect(() => {
     socket.on("receivedMessage", (text) => {
       setMessagesList((current) => [...current, text]);
