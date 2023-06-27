@@ -1,16 +1,17 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Room from "./pages/Room";
-import { socket } from "./api/socket";
+import "./App.css";
 
 function App() {
- //socket.connect();
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/room/:rooId" element={<Room />} />
-      </Routes>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/room" element={<Room />} />
+        </Routes>
+      </div>
     </BrowserRouter>
   );
 }

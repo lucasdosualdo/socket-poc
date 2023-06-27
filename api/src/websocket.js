@@ -7,11 +7,14 @@ io.on("connection", (socket) => {
   });
   socket.on("setUsername", (username) => {
     socket.data.username = username;
-    console.log(socket.data.username, "username recebido");
   });
 
   socket.on("message", (text) => {
-    io.emit("receivedMessage", text);
+    io.emit("receivedMessage", {
+      author: socket.data.username,
+      text,
+      authorId: socket.id,
+    });
   });
   socket.on("disconnect", (reason) => {
     console.log("user disconnected", reason);
